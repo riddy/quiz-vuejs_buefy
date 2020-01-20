@@ -1,13 +1,6 @@
 <template>
   <div class="quiz">
-    <b-steps
-      type="is-success"
-      v-model="activeStep"
-      :animated="true"
-      :has-navigation="true"
-      :icon-prev="prevIcon"
-      :icon-next="nextIcon"
-    >
+    <b-steps type="is-success" v-model="activeStep" :animated="true" :has-navigation="true">
       <b-step-item label :clickable="false" v-for="(category, idx) in quiz.categories" :key="idx">
         <question-set
           :ref="'skill-' + category.skill"
@@ -18,6 +11,7 @@
         />
       </b-step-item>
     </b-steps>
+
     <div class="result-link" v-if="activeStep===6" v-on:click="jumpToResult">Result..</div>
   </div>
 </template>
@@ -25,7 +19,6 @@
 <script>
 import quiz from "../questions.js";
 import QuestionSet from "./QuestionSet";
-import router from "vue-router";
 export default {
   name: "quiz",
   components: {
@@ -53,8 +46,9 @@ export default {
       this.results[this.data.skill] = this.data.points;
     },
     jumpToResult() {
-      let resultString = JSON.stringify(this.result);
-      return router.push({ path: `/result/${resultString}` });
+      let resultString = JSON.stringify(this.results);
+      this.$router.push({ path: "/result/" + resultString });
+      // return this.$route
     }
   },
   watch: {
@@ -72,7 +66,7 @@ export default {
   margin-top: -42px;
   display: block;
   height: 40px;
-  margin-right: 30px;
+  margin-right: 80px;
   margin-left: auto;
   text-align: right;
   width: 99px;
@@ -81,5 +75,15 @@ export default {
   padding: 7px;
   border-radius: 4px;
   cursor: pointer;
+}
+.step-navigation {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.label {
+  font-size: 1.3rem;
+}
+.b-slider-tick-label {
+  font-size: 1rem !important;
 }
 </style>

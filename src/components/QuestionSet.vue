@@ -1,6 +1,6 @@
 <template>
   <div class="question-set">
-    <h1 class="title">{{title}}</h1>
+    <h2 class="title">{{title}}</h2>
 
     <b-field :label="question" v-for="(question, idx) in questions" :key="idx">
       <b-slider
@@ -57,20 +57,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .quiz {
-    margin-top: 80;
+  margin-top: 80;
 }
 .label {
-    margin-top: 100;
+  margin-top: 100;
 }
 .title {
   font-weight: bold;
   text-align: center;
 }
-.question-set{
-    margin-left: 80px;
-    margin-right: 80px;
-}
-</style>>
 
+nav.step-navigation,
+.question-set {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+</style>
