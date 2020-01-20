@@ -48,18 +48,13 @@ export default {
     jumpToResult() {
       let resultString = JSON.stringify(this.results);
       this.$router.push({ path: "/result/" + resultString });
-      // return this.$route
-    }
-  },
-  watch: {
-    activeStep() {
-      return "";
     }
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+
 .result-link {
   color: #23d160 !important;
   font-family: monospace;
