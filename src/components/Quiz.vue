@@ -20,10 +20,11 @@
     </b-steps>
 
     <div
-      class="result-link"
       v-if="activeStep===(quiz.categories.length-1)"
       v-on:click="jumpToResult"
-    >Result..</div>
+    >
+      <b-button class="right-button" type="is-success" outlined>Result</b-button>
+    </div>
   </div>
 </template>
 
@@ -55,10 +56,9 @@ export default {
       for (let index = 0; index < quiz.categories.length; index++) {
         const category = quiz.categories[index];
 
-        var skill =  category.skill;
+        var skill = category.skill;
 
         var skillValues = this.$refs["skill-" + skill];
-          window.console.log(skillValues);
         if (skillValues) {
           var data = skillValues[0].calc();
           this.results[skill] = data.points;
@@ -79,22 +79,7 @@ export default {
 </script>
 
 <style>
-.result-link {
-  color: #23d160 !important;
-  font-family: monospace;
-  margin-top: -42px;
-  display: block;
-  height: 40px;
-  margin-right: 80px;
-  margin-left: auto;
-  text-align: right;
-  width: 99px;
-  font-weight: bold;
-  border: 2px solid grey;
-  padding: 7px;
-  border-radius: 4px;
-  cursor: pointer;
-}
+
 .step-navigation {
   margin-left: 80px;
   margin-right: 80px;

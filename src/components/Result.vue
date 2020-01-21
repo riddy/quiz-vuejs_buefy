@@ -1,9 +1,9 @@
 <template>
-  <div class="section">
-    <h2>Thanks for your time! Your most developed skill seems to be '{{score().name}}'.</h2>
-    <hr />
+  <div class="section top-section">
     <div class="columns">
       <div class="column">
+        <h2>Thanks for your time! Your most developed skill seems to be '{{score().name}}'.</h2>
+        <br />
         <div v-if="'Strength'===score().name">
           <p>Also known as 'Servers' or 'Backend'.</p>
           <p>
@@ -58,22 +58,52 @@
             be able to cope with whatever comes up.
           </p>
         </div>
-        <hr />
-        <div class="custom-inputs">
-          <h2>You can create your profile now, please fill in the following to do so and then click on the image:</h2>
+      </div>
+
+      <div class="column is-one-quarter">
+        <img :src="getImgUrl()" class="clickable-img" />
+      </div>
+    </div>
+    <hr />
+    <div class="custom-inputs">
+      <h2>You can create your profile now, please fill in the following to do so and then click the button</h2>
+      <div class="columns">
+        <div class="column">
           <b-field label="Name" type="is-success">
             <b-input minlength="2" maxlength="18" placeholder="Your Name"></b-input>
           </b-field>
           <b-field label="Experience" type="is-success">
-            <b-input type="number" min="0" max="50" placeholder="Years of Experience"></b-input>
+            <b-input
+              v-model="profile.exp"
+              type="number"
+              min="0"
+              max="50"
+              placeholder="Years of Experience"
+            ></b-input>
           </b-field>
-          <b-field label="Key Fact" type="is-success">
-            <b-input minlength="8" maxlength="60" placeholder="Something people tell about you"></b-input>
+          <b-field label="Projects" type="is-success">
+            <b-input minlength="2" maxlength="30" placeholder="Project(s) you are working on"></b-input>
           </b-field>
         </div>
-      </div>
-      <div class="column is-two-fifths">
-        <img :src="getImgUrl()" class="clickable-img" v-on:click="jumpToProfile" />
+        <div class="column">
+          <b-field label="Myth (or Fact)" type="is-success">
+            <b-input
+              v-model.trim="profile.myth"
+              minlength="8"
+              maxlength="60"
+              placeholder="Something people tell about you"
+            ></b-input>
+          </b-field>
+          <b-field label="Home Base" v-model.trim="profile.home" type="is-success">
+            <b-input minlength="6" maxlength="11" placeholder="Project(s) you are working on"></b-input>
+          </b-field>
+          <b-button
+            v-on:click="jumpToProfile"
+            class="right-button"
+            type="is-success"
+            outlined
+          >Finish profile generation</b-button>
+        </div>
       </div>
     </div>
   </div>
@@ -91,8 +121,9 @@ export default {
     return {
       profile: {
         name: "",
-        fact: "",
+        myth: "",
         exp: 0,
+        home: "",
         results: {
           Strength: 0,
           Perception: 0,
@@ -148,6 +179,9 @@ export default {
 </script>
 
 <style lang="scss">
+.custom-inputs {
+  padding-top: 0;
+}
 .custom-inputs .field .label {
   margin-bottom: 0;
   margin-top: 5px;
@@ -157,21 +191,13 @@ export default {
 .custom-input .control {
   height: 35px;
 }
-
-.result-link {
-  color: #23d160 !important;
-  font-family: monospace;
-  margin-top: -42px;
-  display: block;
-  height: 40px;
-  text-align: right;
-  width: 99px;
-  font-weight: bold;
-  border: 2px solid grey;
-  padding: 7px;
-  border-radius: 4px;
-  cursor: pointer;
+.right-button {
+  float: right;
 }
+.top-section {
+  padding-top: 0;
+}
+
 .clickable-img {
   cursor: pointer;
 }

@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <div class="section top-section">
     <h2 class="title">Your Profile:</h2>
-    <div class="columns section">
-      <div class="column">Name:</div>
-      <div class="column">Strength:</div>
+    <div class="columns header-columns">
+      <div class="column">Dweller:</div>
+      <div class="column">S.P.E.C.I.A.L.:</div>
       <div class="column">Exp.:</div>
+      <div class="column">Projects.:</div>
       <div class="column">Good to know:</div>
+      <div class="column">Citizen of:</div>
     </div>
-    <div class="columns section">
+    <div class="columns">
       <div class="column">{{user.name}}</div>
       <div class="column">
         <div class="special-skill">
@@ -21,8 +23,11 @@
         </div>
       </div>
       <div class="column">{{user.exp}}</div>
-      <div class="column">{{user.fact}}</div>
+      <div class="column">{{user.projects}}</div>
+      <div class="column">{{user.myth}}</div>
+      <div class="column">{{user.home}}</div>
     </div>
+    <img class="terminal-image" src="../assets/terminal.jpg" />
   </div>
 </template>
 
@@ -43,18 +48,33 @@ export default {
 </script>
 
 <style lang="scss">
+.header-columns {
+  border-bottom: 1px solid;
+  height: 35px;
+}
 .special-skill {
   .progress-wrapper {
-    margin-bottom: 0.5rem;
-    width: 140px;
-    width: 140px;
-    margin-top: -50px;
+    margin-bottom: -18px;
+    width: 40px;
+    height: 0px;
+    -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
+    .progress {
+      height: 9px;
+    }
   }
+
   transform: rotate(-270deg);
-  margin: 0;
-  padding: 0;
-  margin-left: -352px;
-  margin-top: 305px;
+  width: 0px;
+}
+.terminal-image{    
+    width: 100%;
+    position: absolute;
+    top: 71px;
+    opacity: 14%;
+    height: 600px;
+}
+.top-section {
+  padding-top: 0;
 }
 </style>
