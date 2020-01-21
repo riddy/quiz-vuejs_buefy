@@ -47,6 +47,7 @@ export default {
           sum += this.results[prop];
         }
       }
+
       return {
         skill: this.skill,
         points: sum
@@ -58,7 +59,7 @@ export default {
 
 <style lang="scss" scoped>
 .quiz {
-  margin-top: 80;
+  // margin-top: 80;
 }
 .label {
   margin-top: 100;

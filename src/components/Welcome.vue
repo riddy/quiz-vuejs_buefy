@@ -1,10 +1,8 @@
 <template>
-  <div class="welcome">
-    <p>
+  <div class="section welcome">
       Tell us about yourself! We need to know what kind of developer you are.
-    </p>
     <router-link to="/quiz">
-    <img class="quiz-link" src="../assets/special.png" />
+    <img class="quiz-link" src="../assets/special.jpg" />
     </router-link>
   </div>
 </template>

@@ -29,7 +29,10 @@
 <script>
 export default {
   props: {
-    //  profile: "{'name':'','fact':'','exp':0,'results':{'Strength':0,'Perception':1,'Endurance':4,'Charisma':0,'Intelligence':0,'Agility':0,'Luck':0}}"
+    result: {
+      type: String
+      //  profile: "{'name':'','fact':'','exp':0,'results':{'Strength':0,'Perception':1,'Endurance':4,'Charisma':0,'Intelligence':0,'Agility':0,'Luck':0}}"
+    }
   },
   data() {
     return {

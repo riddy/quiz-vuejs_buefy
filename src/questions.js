@@ -7,14 +7,14 @@ export default {
         "questions": [
           "I'm experienced with cloud development and IoT devices",
           "I have worked several years with backend framworks",
-          "Good architecture is crucial to bring the best result for the customer's requirements."
+          "I always challenge the status quo for improving our architecture. This is crucial to bring the best result for the customer's requirements."
         ]
       },
       {
         "title": "Next: 'Perception'",
         "skill": "Perception",
         "questions": [
-          "Not happy before the customer get's the best possible experience!",
+          "Not happy before the user get's the best possible experience!",
           "Have already used tons of UI frameworks (or few extensively)",
           "I'm up to date with all kind of new frontend technologies and can tell about traid-offs and advantages."
         ]
@@ -42,7 +42,7 @@ export default {
         "skill": "Intelligence",
         "questions": [
           "I can explain in detail what is AI and when to use neural networks",
-          "I'm an expert for databases",
+          "I can talk to any SQL and NoSQL database and tweak its performance to my custumers' needs.",
           "Collecting and processing a huge bunch of data is something I've done a lot"
         ]
       },
@@ -51,7 +51,7 @@ export default {
         "skill": "Agility",
         "questions": [
           "Scrum and/or Kanban are my daily business",
-          "Refactoring is daily business and will be done regulary",
+          "Refactoring is daily business and is done regulary",
           "I can adapt to challenges and new situations quickly and embrace it along the way"
         ]
       },

@@ -1,6 +1,13 @@
 <template>
-  <div class="quiz">
-    <b-steps type="is-success" v-model="activeStep" :animated="true" :has-navigation="true">
+  <div class="quiz section">
+    <b-steps
+      size="is-small"
+      type="is-success"
+      v-model="activeStep"
+      v-on:change="updateSkill"
+      :animated="true"
+      :has-navigation="true"
+    >
       <b-step-item label :clickable="false" v-for="(category, idx) in quiz.categories" :key="idx">
         <question-set
           :ref="'skill-' + category.skill"
@@ -12,7 +19,11 @@
       </b-step-item>
     </b-steps>
 
-    <div class="result-link" v-if="activeStep===6" v-on:click="jumpToResult">Result..</div>
+    <div
+      class="result-link"
+      v-if="activeStep===(quiz.categories.length-1)"
+      v-on:click="jumpToResult"
+    >Result..</div>
   </div>
 </template>
 
@@ -41,20 +52,33 @@ export default {
   },
   methods: {
     updateSkill() {
-      // this.$refs["skill-Charisma"][0].calc()
+      for (let index = 0; index < quiz.categories.length; index++) {
+        const category = quiz.categories[index];
 
-      this.results[this.data.skill] = this.data.points;
+        var skill =  category.skill;
+
+        var skillValues = this.$refs["skill-" + skill];
+          window.console.log(skillValues);
+        if (skillValues) {
+          var data = skillValues[0].calc();
+          this.results[skill] = data.points;
+        }
+      }
     },
     jumpToResult() {
       let resultString = JSON.stringify(this.results);
       this.$router.push({ path: "/result/" + resultString });
     }
+  },
+  watch: {
+    activeStep() {
+      return "";
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-
+<style>
 .result-link {
   color: #23d160 !important;
   font-family: monospace;
@@ -80,5 +104,19 @@ export default {
 }
 .b-slider-tick-label {
   font-size: 1rem !important;
+}
+
+.quiz .step-navigation .pagination-next:before,
+.quiz .step-navigation .pagination-previous:before {
+  font-size: 2rem;
+  position: absolute;
+  color: #23d160;
+  font-weight: bold;
+}
+.quiz .step-navigation .pagination-previous:before {
+  content: "<";
+}
+.quiz .step-navigation .pagination-next:before {
+  content: ">";
 }
 </style>

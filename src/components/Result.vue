@@ -72,8 +72,8 @@
           </b-field>
         </div>
       </div>
-      <div class="column is-two-fifths " >
-        <img :src="getImgUrl()" class="clickable-img" v-on:click="jumpToProfile"/>
+      <div class="column is-two-fifths">
+        <img :src="getImgUrl()" class="clickable-img" v-on:click="jumpToProfile" />
       </div>
     </div>
   </div>
@@ -112,13 +112,14 @@ export default {
         name: "nothing'. You're talentless. Can't believe that, try again!",
         value: 0
       };
-
+      let userResponses;
       try {
-        this.profile.results = JSON.parse(this.$route.params.result);
+        userResponses = JSON.parse(this.$route.params.result);
+        this.profile.results = userResponses;
       } catch (e) {
-        //go with default
+        userResponses = { Luck: 10 };
       }
-      for (let [key, value] of Object.entries(this.profile.results)) {
+      for (let [key, value] of Object.entries(userResponses)) {
         let skillLevel = parseInt(value);
         if (skillLevel > mostDevelopedSkill.value) {
           mostDevelopedSkill.name = key;
@@ -171,7 +172,7 @@ export default {
   border-radius: 4px;
   cursor: pointer;
 }
-.clickable-img{
-    cursor: pointer;
+.clickable-img {
+  cursor: pointer;
 }
 </style>
